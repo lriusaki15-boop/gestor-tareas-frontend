@@ -1,10 +1,10 @@
-.bg-login {
-  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+.bg-register {
+  background: linear-gradient(135deg, #2563eb, #7c3aed);
 }
 
-.login-card {
+.register-card {
   width: 100%;
-  max-width: 400px;
+  max-width: 450px;
   border: none;
   border-radius: 15px;
 }
@@ -17,10 +17,10 @@
 .btn-primary {
   height: 45px;
   border-radius: 10px;
-  background-color: #4f46e5;
+  background-color: #2563eb;
   border: none;
 }
 
 .btn-primary:hover {
-  background-color: #4338ca;
+  background-color: #1d4ed8;
 }
