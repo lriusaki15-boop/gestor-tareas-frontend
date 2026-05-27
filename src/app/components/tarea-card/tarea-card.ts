@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tarea-card',
-  imports: [],
+  imports: [FormsModule],
+  standalone: true,
   templateUrl: './tarea-card.html',
   styleUrl: './tarea-card.css',
 })

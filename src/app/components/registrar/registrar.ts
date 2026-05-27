@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth';
 @Component({
   selector: 'app-registrar',
   imports: [FormsModule],
+  standalone: true,
   templateUrl: './registrar.html',
   styleUrl: './registrar.css',
 })
@@ -20,18 +21,23 @@ export class Registrar {
   aceptaTerminos = false;
 
   registrar() {
+
+      if (this.contrasenia !== this.contraseniaConfirmacion) {
+        alert('Las contraseñas no coinciden');
+        return;
+      }
+
+      if (!this.aceptaTerminos) {
+        alert('Debes aceptar los términos');
+        return;
+      }
+
       const usuario = {
       nombre: this.nombre,
       apellidos: this.apellidos,
       email: this.email,
       contrasenia: this.contrasenia
     };
-    
-    if(this.contrasenia == this.contraseniaConfirmacion){
-
-    }else{
-
-    }
 
     this.authService.registrar(usuario).subscribe({
       next: (resp) => {
