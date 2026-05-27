@@ -9,31 +9,31 @@
       <form (ngSubmit)="registrar()">
         <div class="mb-3">
           <label class="form-label">Nombre </label>
-          <input type="text" class="form-control" placeholder="Miguel" [(ngModel)]="nombre">
+          <input type="text" class="form-control" placeholder="Miguel" [(ngModel)]="nombre" name="nombre">
         </div>
 
         <div class="mb-3">
           <label class="form-label">Apellidos </label>
-          <input type="text" class="form-control" placeholder="Cervera Artal" [(ngModel)]="apellidos">
+          <input type="text" class="form-control" placeholder="Cervera Artal" [(ngModel)]="apellidos" name="apellidos">
         </div>
 
         <div class="mb-3">
           <label class="form-label">Correo electrónico</label>
-          <input type="email" class="form-control" placeholder="ejemplo@correo.com" [(ngModel)]="email">
+          <input type="email" class="form-control" placeholder="ejemplo@correo.com" [(ngModel)]="email" name="email">
         </div>
 
         <div class="mb-3">
           <label class="form-label">Contraseña</label>
-          <input type="password" class="form-control" placeholder="********" [(ngModel)]="contrasenia">
+          <input type="password" class="form-control" placeholder="********" [(ngModel)]="contrasenia" name="contrasenia">
         </div>
 
         <div class="mb-4">
           <label class="form-label">Confirmar contraseña</label>
-          <input type="password" class="form-control" placeholder="********" [(ngModel)]="confirmarContrasenia">
+          <input type="password" class="form-control" placeholder="********" [(ngModel)]="contraseniaConfirmacion" name="contraseniaConfirmacion">
         </div>
 
         <div class="form-check mb-4">
-          <input class="form-check-input" type="checkbox" id="terms" [(ngModel)]="aceptaTerminos">
+          <input class="form-check-input" type="checkbox" id="terms" [(ngModel)]="aceptaTerminos" name="aceptaTerminos">
           <label class="form-check-label" for="terms">Acepto los términos y condiciones</label>
         </div>
         <button type="submit" class="btn btn-primary w-100">Registrarse</button>
