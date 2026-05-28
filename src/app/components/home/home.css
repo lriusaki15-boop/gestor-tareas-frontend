@@ -1,0 +1,38 @@
+/* home.component.css */
+
+.hero-section {
+  height: 90vh;
+  background: linear-gradient(
+      rgba(0,0,0,0.5),
+      rgba(0,0,0,0.5)
+    ),
+    url('https://images.unsplash.com/photo-1498050108023-c5249f4df085')
+    center/cover no-repeat;
+}
+
+.hero-section h1 {
+  font-size: 4rem;
+}
+
+.hero-section p {
+  font-size: 1.3rem;
+}
+
+.custom-card {
+  border: none;
+  border-radius: 15px;
+  transition: 0.3s ease;
+}
+
+.custom-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+}
+
+.icon {
+  font-size: 3rem;
+}
+
+footer {
+  font-size: 14px;
+}
