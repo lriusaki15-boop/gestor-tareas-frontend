@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
 
 @Component({
@@ -12,6 +12,7 @@ import { AuthService } from '../../services/auth';
 })
 export class Login {
   private authService = inject(AuthService);
+  private router = inject(Router);
 
   email = '';
   contrasenia = '';
@@ -26,6 +27,7 @@ export class Login {
       next: (resp: any) => {
         console.log(resp);
         localStorage.setItem('token', resp.clave ?? resp.Clave);
+         this.router.navigate(['/home']);
       },
       error: (err) => {
         console.error(err);
