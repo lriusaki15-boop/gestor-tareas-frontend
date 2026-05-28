@@ -11,7 +11,7 @@ export class AuthService {
   private apiUrl = 'https://localhost:5001/api/autorizacion';
 
   registrar(data: any) {
-    return this.http.post(`${this.apiUrl}/registrar`, data);
+    return this.http.post(`${this.apiUrl}/registro`, data);
   }
 
   login(data: any) {

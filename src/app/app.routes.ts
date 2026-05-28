@@ -4,5 +4,5 @@ import { Registrar } from './components/registrar/registrar';
 
 export const routes: Routes = [
   { path: '', component: Login },
-  { path: 'registro', component: Registrar }
+  { path: 'registrar', component: Registrar }
 ];
