@@ -1,10 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-registrar',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   standalone: true,
   templateUrl: './registrar.html',
   styleUrl: './registrar.css',
@@ -36,7 +37,8 @@ export class Registrar {
       nombre: this.nombre,
       apellidos: this.apellidos,
       email: this.email,
-      contrasenia: this.contrasenia
+      contrasenia: this.contrasenia,
+      rango: 2
     };
 
     this.authService.registrar(usuario).subscribe({
