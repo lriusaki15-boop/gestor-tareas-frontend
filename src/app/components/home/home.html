@@ -59,7 +59,12 @@
 <!-- Hero Section -->
 <section class="hero-section d-flex align-items-center">
 
-  
+  <app-tarea-card
+    *ngFor="let tarea of tareas"
+    [titulo]="tarea.titulo"
+    [nombreUsuario]="tarea.nombreUsuario"
+    [fechaLimite]="tarea.fechaLimite | date:'dd/MM/yyyy'"
+    [estaCompletada]="tarea.estaCompletada"></app-tarea-card>
 
 </section>
 
