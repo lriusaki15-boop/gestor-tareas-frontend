@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-registrar',
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink],
   standalone: true,
   templateUrl: './registrar.html',
   styleUrl: './registrar.css',
@@ -45,7 +45,7 @@ export class Registrar {
       next: (resp) => {
         console.log('Usuario registrado', resp);
         alert('Usuario registrado correctamente');
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         console.error(err);
