@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -9,9 +9,11 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './tarea-card.css',
 })
 export class TareaCard {
-  titulo = 'Preparar informe trimestral';
-  nombreUsuario = 'Ana García';
-  fechaLimite = '30 jun 2025';
-  estaCompletada = false;
-  tipo = 'Simple';
+  @Input() titulo = '';
+
+  @Input() nombreUsuario = '';
+
+  @Input() fechaLimite = '';
+
+  @Input() estaCompletada = false;
 }

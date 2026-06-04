@@ -16,6 +16,7 @@ export class Login {
 
   email = '';
   contrasenia = '';
+  errorMensaje: string | undefined;
 
   login() {
 
@@ -31,6 +32,7 @@ export class Login {
       },
       error: (err) => {
         console.error(err);
+        this.errorMensaje = 'Usuario o contraseña incorrectos';
       }
     });
   }
