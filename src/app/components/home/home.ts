@@ -1,11 +1,13 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TareasService } from '../../services/tareas';
+import { CommonModule } from '@angular/common';
+import { TareaCard } from '../tarea-card/tarea-card';
 
 @Component({
-  selector: 'app-home',
+   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [CommonModule, TareaCard],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })
