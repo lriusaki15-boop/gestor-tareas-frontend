@@ -12,7 +12,7 @@ export class TareaCard {
 
   @Input() nombreUsuario = '';
 
-  @Input() fechaCreacion!: Date;
+  @Input() fechaCreacion!: string;
 
   @Input() estaCompletada = false;
 }

@@ -29,6 +29,7 @@ export class Login {
       next: (resp: any) => {
         console.log(resp);
         localStorage.setItem('token', resp.clave ?? resp.Clave);
+        
          this.router.navigate(['/home']);
       },
       error: (err) => {

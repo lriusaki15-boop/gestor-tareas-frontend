@@ -5,51 +5,65 @@
 
   <div class="container">
 
-    <a class="navbar-brand fw-bold" href="#">
-      MiApp
-    </a>
+        <a class="navbar-brand fw-bold" href="#">
+          MiApp
+        </a>
 
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div
-      class="collapse navbar-collapse"
-      id="navbarNav">
+        <div
+          class="collapse navbar-collapse"
+          id="navbarNav">
+    <ul class="navbar-nav ms-auto">
 
-      <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [class.active]="vistaActual === 'inicio'"
+          (click)="cambiarVista('inicio')">
 
-        <li class="nav-item">
-          <a class="nav-link active" href="#">
-            Inicio
-          </a>
-        </li>
+          Inicio
+        </a>
+      </li>
 
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            Crear Tarea
-          </a>
-        </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [class.active]="vistaActual === 'crear'"
+          (click)="cambiarVista('crear')">
 
-        <li class="nav-item">
-          <a class="nav-link" href="#">
-            Ver Usuarios
-          </a>
-        </li>
+          Crear Tarea
+        </a>
+      </li>
 
-        <li class="nav-item ms-2">
-          <button class="btn btn-primary" (click)="logout()">
-            Cerrar sesión
-          </button>
-        </li>
+      <li class="nav-item">
+        <a
+          class="nav-link"
+          [class.active]="vistaActual === 'usuarios'"
+          (click)="cambiarVista('usuarios')">
 
-      </ul>
+          Usuarios
+        </a>
+      </li>
 
+      <li class="nav-item ms-3">
+        <button
+          class="btn btn-danger"
+          (click)="logout()">
+
+          Cerrar sesión
+
+        </button>
+      </li>
+
+    </ul>
     </div>
 
   </div>
@@ -59,17 +73,58 @@
 <!-- Hero Section -->
 <section class="hero-section d-flex align-items-center">
 
-  <app-tarea-card
-    *ngFor="let tarea of tareas"
-    [titulo]="tarea.titulo"
-    [nombreUsuario]="tarea.nombreUsuario"
-    [fechaCreacion]="tarea.fechaCreacion"
-    [estaCompletada]="tarea.estaCompletada"></app-tarea-card>
+ <div class="container py-4">
 
-</section>
-<section class="container mt-4">
+  <!-- LISTADO TAREAS -->
 
-  <app-creacion-tarea></app-creacion-tarea>
+  <div *ngIf="vistaActual === 'inicio'">
+
+    <h2 class="mb-4">
+      Listado de tareas
+    </h2>
+
+    <div class="row">
+
+      <div
+        class="col-md-4 mb-3"
+        *ngFor="let tarea of tareas">
+
+        <app-tarea-card
+          [titulo]="tarea.titulo"
+          [nombreUsuario]="tarea.nombreUsuario"
+          [fechaCreacion]="tarea.fechaCreacion"
+          [estaCompletada]="tarea.estaCompletada">
+        </app-tarea-card>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- CREAR TAREA -->
+
+  <div *ngIf="vistaActual === 'crear'">
+
+    <app-creacion-tarea></app-creacion-tarea>
+
+  </div>
+
+  <!-- USUARIOS -->
+
+  <div *ngIf="vistaActual === 'usuarios'">
+
+    <h2>
+      Gestión de usuarios
+    </h2>
+
+    <div class="alert alert-info">
+      Aquí irá el listado de usuarios.
+    </div>
+
+  </div>
+
+</div>
 
 </section>
 <!-- Footer -->

@@ -1,16 +1,21 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
-import { TareasService } from '../../services/tareas';
 import { CommonModule } from '@angular/common';
+
+import { TareasService } from '../../services/tareas';
 import { TareaCard } from '../tarea-card/tarea-card';
 import { CreacionTarea } from '../creacion-tarea/creacion-tarea';
 
 @Component({
-   selector: 'app-home',
+  selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TareaCard, CreacionTarea],
+  imports: [
+    CommonModule,
+    TareaCard,
+    CreacionTarea
+  ],
   templateUrl: './home.html',
-  styleUrl: './home.css',
+  styleUrl: './home.css'
 })
 export class Home {
 
@@ -19,13 +24,28 @@ export class Home {
 
   tareas: any[] = [];
 
+  vistaActual: 'inicio' | 'crear' | 'usuarios' = 'inicio';
+
   ngOnInit() {
+    this.cargarTareas();
+  }
+
+  cargarTareas() {
     this.tareasService.obtenerTareas().subscribe({
       next: (data) => {
         this.tareas = data;
       }
     });
   }
+
+  cambiarVista(vista: 'inicio' | 'crear' | 'usuarios') {
+    this.vistaActual = vista;
+
+    if (vista === 'inicio') {
+      this.cargarTareas();
+    }
+  }
+
   logout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login']);
