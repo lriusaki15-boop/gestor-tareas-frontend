@@ -45,7 +45,7 @@ export class Registrar {
       next: (resp) => {
         console.log('Usuario registrado', resp);
         alert('Usuario registrado correctamente');
-        this.router.navigate(['/']);
+        this.router.navigate(['/login']);
       },
       error: (err) => {
         console.error(err);

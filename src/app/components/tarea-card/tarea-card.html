@@ -1,0 +1,20 @@
+<div class="card p-3 shadow-sm">
+  <h5>{{ titulo }}</h5>
+
+  <p>
+    Responsable: {{ nombreUsuario }}
+  </p>
+
+  <p>
+    Fecha límite: {{ fechaLimite }}
+  </p>
+
+  <span
+    class="badge"
+    [class.bg-success]="estaCompletada"
+    [class.bg-warning]="!estaCompletada">
+
+    {{ estaCompletada ? 'Completada' : 'Pendiente' }}
+
+  </span>
+</div>
