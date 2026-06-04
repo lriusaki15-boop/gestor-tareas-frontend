@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Output, EventEmitter } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { TareasService } from '../../services/tareas';
@@ -10,8 +10,9 @@ import { TareasService } from '../../services/tareas';
   templateUrl: './creacion-tarea.html',
   styleUrl: './creacion-tarea.css'
 })
-export class CreacionTarea {
 
+export class CreacionTarea {
+  @Output() tareaCreada = new EventEmitter<void>();
   private tareasService = inject(TareasService);
 
   titulo = '';
@@ -37,6 +38,8 @@ export class CreacionTarea {
 
         this.titulo = '';
         this.descripcion = '';
+
+        this.tareaCreada.emit();
       },
       error: (err) => {
         console.error(err);

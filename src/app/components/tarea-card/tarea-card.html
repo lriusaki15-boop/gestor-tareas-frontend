@@ -1,20 +1,28 @@
-<div class="card p-3 shadow-sm">
-  <h5>{{ titulo }}</h5>
+<div class="card shadow-sm h-100">
 
-  <p>
-    Responsable: {{ nombreUsuario }}
-  </p>
+  <div class="card-body">
 
-  <p>
-    Fecha Creacion: {{ fechaCreacion }}
-  </p>
+    <h5 class="card-title">
+      {{ titulo }}
+    </h5>
 
-  <span
-    class="badge"
-    [class.bg-success]="estaCompletada"
-    [class.bg-warning]="!estaCompletada">
+    <p class="text-muted mb-2">
+      {{ nombreUsuario }}
+    </p>
 
-    {{ estaCompletada ? 'Completada' : 'Pendiente' }}
+    <p class="small">
+      {{ fechaCreacion }}
+    </p>
 
-  </span>
+    <span
+      class="badge"
+      [class.bg-success]="estaCompletada"
+      [class.bg-warning]="!estaCompletada">
+
+      {{ estaCompletada ? 'Completada' : 'Pendiente' }}
+
+    </span>
+
+  </div>
+
 </div>

@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-
+import { UsuariosService } from '../../services/usuario';
 import { TareasService } from '../../services/tareas';
 import { TareaCard } from '../tarea-card/tarea-card';
 import { CreacionTarea } from '../creacion-tarea/creacion-tarea';
@@ -18,11 +18,12 @@ import { CreacionTarea } from '../creacion-tarea/creacion-tarea';
   styleUrl: './home.css'
 })
 export class Home {
-
+  private usuariosService = inject(UsuariosService);
   private router = inject(Router);
   private tareasService = inject(TareasService);
 
   tareas: any[] = [];
+  usuarios: any[] = [];
 
   vistaActual: 'inicio' | 'crear' | 'usuarios' = 'inicio';
 
@@ -43,6 +44,14 @@ export class Home {
 
     if (vista === 'inicio') {
       this.cargarTareas();
+    }
+    if (vista === 'usuarios') {
+
+    this.usuariosService.obtenerListadoUsuarios().subscribe({
+        next: (data) => {
+          this.usuarios = data;
+        }
+      });
     }
   }
 
