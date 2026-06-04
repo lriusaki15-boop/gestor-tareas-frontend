@@ -63,7 +63,7 @@
     *ngFor="let tarea of tareas"
     [titulo]="tarea.titulo"
     [nombreUsuario]="tarea.nombreUsuario"
-    [fechaLimite]="tarea.fechaLimite | date:'dd/MM/yyyy'"
+    [fechaCreacion]="tarea.fechaCreacion"
     [estaCompletada]="tarea.estaCompletada"></app-tarea-card>
 
 </section>
