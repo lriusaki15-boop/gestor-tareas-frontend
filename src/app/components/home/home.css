@@ -4,10 +4,8 @@
   height: 90vh;
   background: linear-gradient(
       rgba(0,0,0,0.5),
-      rgba(0,0,0,0.5)
-    ),
-    url('https://images.unsplash.com/photo-1498050108023-c5249f4df085')
-    center/cover no-repeat;
+      rgba(99, 96, 96, 0.5)
+    )
 }
 
 .hero-section h1 {

@@ -3,11 +3,12 @@ import { Router } from '@angular/router';
 import { TareasService } from '../../services/tareas';
 import { CommonModule } from '@angular/common';
 import { TareaCard } from '../tarea-card/tarea-card';
+import { CreacionTarea } from '../creacion-tarea/creacion-tarea';
 
 @Component({
    selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, TareaCard],
+  imports: [CommonModule, TareaCard, CreacionTarea],
   templateUrl: './home.html',
   styleUrl: './home.css',
 })

@@ -1,0 +1,17 @@
+.card {
+  border-radius: 15px;
+}
+
+.card-header {
+  border-radius: 15px 15px 0 0 !important;
+}
+
+.form-control {
+  border-radius: 10px;
+}
+
+.btn-primary {
+  height: 50px;
+  border-radius: 10px;
+  font-weight: 600;
+}
