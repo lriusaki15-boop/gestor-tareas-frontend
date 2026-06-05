@@ -32,13 +32,17 @@ export class Home implements OnInit {
   this.cargarTareas();  
 }
 
-  cargarTareas() {
-    this.tareasService.obtenerTareas().subscribe({
-      next: (data) => {
-        this.tareas = data;
-      }
-    });
-  }
+ cargarTareas() {
+  this.tareasService.obtenerTareas().subscribe({
+    next: (data) => {
+      this.tareas = data;
+      console.log('Tareas cargadas', data);
+    },
+    error: (err) => {
+      console.error('Error cargando tareas:', err);
+    }
+  });
+}
 
   cambiarVista(vista: 'inicio' | 'crear' | 'usuarios') {
     this.vistaActual = vista;

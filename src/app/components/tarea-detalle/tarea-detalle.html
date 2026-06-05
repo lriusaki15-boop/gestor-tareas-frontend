@@ -1,0 +1,25 @@
+<div *ngIf="tarea">
+  <h2>Detalle de Tarea</h2>
+
+  <div *ngIf="!editando">
+    <p><strong>Título:</strong> {{ tarea.titulo }}</p>
+    <p><strong>Descripción:</strong> {{ tarea.descripcion }}</p>
+    <button (click)="activarEdicion()">Editar</button>
+    <button (click)="eliminarTarea()">Eliminar</button>
+  </div>
+
+  <div *ngIf="editando">
+    <label>
+      Título:
+      <input [(ngModel)]="tarea.titulo">
+    </label>
+    <br>
+    <label>
+      Descripción:
+      <textarea [(ngModel)]="tarea.descripcion"></textarea>
+    </label>
+    <br>
+    <button (click)="guardarEdicion()">Guardar</button>
+    <button (click)="cancelarEdicion()">Cancelar</button>
+  </div>
+</div>

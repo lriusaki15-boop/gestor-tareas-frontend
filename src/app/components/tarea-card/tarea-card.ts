@@ -9,6 +9,7 @@ import { Component, Input } from '@angular/core';
 })
 export class TareaCard {
   @Input() id = 0;
+  
   @Input() titulo = '';
 
   @Input() nombreUsuario = '';
