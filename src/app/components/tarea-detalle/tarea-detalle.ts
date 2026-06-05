@@ -12,7 +12,7 @@ import { Input } from '@angular/core';
   templateUrl: './tarea-detalle.html',
   styleUrls: ['./tarea-detalle.css']
 })
-export class TareaDetalle  {
+export class TareaDetalle implements OnChanges {
   @Input() idTarea = 0;
 
 
@@ -33,6 +33,13 @@ export class TareaDetalle  {
   });
     console.log(this.tarea);
 }
+
+  ngOnChanges(changes: SimpleChanges) {
+      if (changes['idTarea'] && this.idTarea) {
+        this.cargarTarea();
+      }
+    }
+  
 
   activarEdicion() {
     this.backup = { ...this.tarea };
