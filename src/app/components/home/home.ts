@@ -47,7 +47,7 @@ export class Home implements OnInit {
   });
 }
 
-  cambiarVista(vista: 'inicio' | 'crear' | 'usuarios') {
+  cambiarVista(vista: 'inicio' | 'crear' | 'usuarios' | 'detalle') {
     this.vistaActual = vista;
 
     if (vista === 'inicio') {

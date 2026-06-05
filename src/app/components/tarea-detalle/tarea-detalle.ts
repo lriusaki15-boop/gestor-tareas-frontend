@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { TareasService } from '../../services/tareas';
 import { Input } from '@angular/core';
 
@@ -12,7 +12,8 @@ import { Input } from '@angular/core';
   templateUrl: './tarea-detalle.html',
   styleUrls: ['./tarea-detalle.css']
 })
-export class TareaDetalle implements OnInit {
+export class TareaDetalle implements  OnChanges {
+  @Input() idTarea = 0;
 
   tarea: any;
   editando = false;
@@ -22,14 +23,25 @@ export class TareaDetalle implements OnInit {
     private tareasService: TareasService,
     private router: Router
   ) {}
-  @Input() idTarea = 0;
+  
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
+
+   if (changes['idTarea']) {
+
+    console.log('ID recibido en detalle:', this.idTarea);
+
     this.tareasService.obtenerTareaPorId(this.idTarea).subscribe({
-    next: (data) => this.tarea = data,
-    error: (err) => console.error(err)
-  });
+      next: (data) => {
+        console.log('Tarea cargada:', data);
+        this.tarea = data;
+      },
+      error: (err) => {
+        console.error('Error API:', err);
+      }
+    });
   }
+}
 
   activarEdicion() {
     this.backup = { ...this.tarea };
