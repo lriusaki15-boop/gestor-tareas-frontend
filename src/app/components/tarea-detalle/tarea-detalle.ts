@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { TareasService } from '../../services/tareas';
 import { Input } from '@angular/core';
-import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-tarea-detalle',
@@ -27,20 +26,25 @@ export class TareaDetalle implements  OnChanges {
     private tareasService: TareasService,
     private router: Router
   ) {}
+  
 
   ngOnChanges(changes: SimpleChanges): void {
-  if (changes['idTarea'] && this.idTarea > 0) {
-    this.cargarTarea();
-  }
-}
 
-private cargarTarea() {
-  this.tareasService.obtenerTareaPorId(this.idTarea).subscribe({
-    next: (data) => {
-      this.tarea = data;
-    },
-    error: (err) => console.error(err)
-  });
+   if (changes['idTarea']) {
+
+    console.log('ID recibido en detalle:', this.idTarea);
+
+    this.tareasService.obtenerTareaPorId(this.idTarea).subscribe({
+      next: (data) => {
+        console.log('Tarea cargada:', data);
+        this.tarea = data;
+        console.log('Tarea cargada tarea:', data);
+      },
+      error: (err) => {
+        console.error('Error API:', err);
+      }
+    });
+  }
 }
 
   activarEdicion() {
