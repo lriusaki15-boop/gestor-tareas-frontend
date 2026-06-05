@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TareasService } from '../../services/tareas';
+import { Input } from '@angular/core';
 
 @Component({
   selector: 'app-tarea-detalle',
@@ -18,18 +19,16 @@ export class TareaDetalle implements OnInit {
   backup: any;
 
   constructor(
-    private route: ActivatedRoute,
     private tareasService: TareasService,
     private router: Router
   ) {}
+  @Input() idTarea = 0;
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
-
-    this.tareasService.obtenerTareaPorId(id).subscribe({
-      next: (data) => this.tarea = data,
-      error: (err) => console.error(err)
-    });
+    this.tareasService.obtenerTareaPorId(this.idTarea).subscribe({
+    next: (data) => this.tarea = data,
+    error: (err) => console.error(err)
+  });
   }
 
   activarEdicion() {
