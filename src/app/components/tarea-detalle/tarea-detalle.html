@@ -3,8 +3,8 @@
   <h2>Detalle de Tarea</h2>
 
   <div *ngIf="!editando">
-    <p><strong>Título:</strong> {{ tarea.titulo }}</p>
-    <p><strong>Descripción:</strong> {{ tarea.descripcion }}</p>
+    <p><strong>Título:</strong> {{ titulo }}</p>
+    <p><strong>Descripción:</strong> {{ descripcion }}</p>
 
     <button class="btn btn-primary me-2" (click)="activarEdicion()">Editar</button>
     <button class="btn btn-danger" (click)="eliminarTarea()">Eliminar</button>

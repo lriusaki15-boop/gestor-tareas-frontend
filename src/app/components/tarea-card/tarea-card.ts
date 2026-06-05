@@ -13,8 +13,6 @@ export class TareaCard {
   
   @Input() titulo = '';
 
-  @Input() nombreUsuario = '';
-
   @Input() fechaCreacion!: string;
 
   @Input() responsable : string | undefined;

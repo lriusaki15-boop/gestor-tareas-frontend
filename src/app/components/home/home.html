@@ -109,7 +109,14 @@
   
 
   <app-tarea-detalle
-    [idTarea]="tareaSeleccionadaId">
+    [idTarea]="tareaSeleccionadaId"
+    [titulo]="tarea.titulo"
+    [responsable]="tarea.responsable"
+    [fechaCreacion]="tarea.fechaCreacion"
+    [estado]="tarea.estado"
+    [descripcion]="tarea.descripcion"
+    [prioridad="tarea.prioridad"]>
+    
   </app-tarea-detalle>
 <button
     class="btn btn-secondary mb-3"

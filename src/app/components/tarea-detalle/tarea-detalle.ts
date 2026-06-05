@@ -12,11 +12,18 @@ import { Input } from '@angular/core';
   templateUrl: './tarea-detalle.html',
   styleUrls: ['./tarea-detalle.css']
 })
-export class TareaDetalle implements  OnChanges {
+export class TareaDetalle  {
   @Input() idTarea = 0;
+  
+  @Input() titulo = '';
 
-  titulo = '';
-  descripcion = '';
+  @Input() nombreUsuario = '';
+
+  @Input() fechaCreacion!: string;
+
+  @Input() responsable : string | undefined;
+
+  @Input() estado = 0;
 
   tarea: any;
   editando = false;
@@ -27,25 +34,6 @@ export class TareaDetalle implements  OnChanges {
     private router: Router
   ) {}
   
-
-  ngOnChanges(changes: SimpleChanges): void {
-
-   if (changes['idTarea']) {
-
-    console.log('ID recibido en detalle:', this.idTarea);
-
-    this.tareasService.obtenerTareaPorId(this.idTarea).subscribe({
-      next: (data) => {
-        console.log('Tarea cargada:', data);
-        this.tarea = data;
-        console.log('Tarea cargada tarea:', data);
-      },
-      error: (err) => {
-        console.error('Error API:', err);
-      }
-    });
-  }
-}
 
   activarEdicion() {
     this.backup = { ...this.tarea };
