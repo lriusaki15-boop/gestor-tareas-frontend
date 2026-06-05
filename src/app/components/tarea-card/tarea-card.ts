@@ -1,6 +1,4 @@
-import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { inject } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-tarea-card',
@@ -10,7 +8,7 @@ import { inject } from '@angular/core';
   styleUrl: './tarea-card.css',
 })
 export class TareaCard {
-  private router = inject(Router);
+  @Output() verDetalle = new EventEmitter<number>();
   @Input() id = 0;
   
   @Input() titulo = '';
@@ -24,7 +22,7 @@ export class TareaCard {
   @Input() estado = 0;
 
   abrirDetalle() {
-    this.router.navigate(['/tarea', this.id]);
+    this.verDetalle.emit(this.id);
   }
 
 }

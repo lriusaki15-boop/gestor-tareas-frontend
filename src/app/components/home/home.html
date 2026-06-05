@@ -90,11 +90,12 @@
         *ngFor="let tarea of tareas">
 
         <app-tarea-card
-          [id] = "tarea.id"
+          [id]="tarea.id"
           [titulo]="tarea.titulo"
           [responsable]="tarea.responsable"
           [fechaCreacion]="tarea.fechaCreacion"
-          [estado]="tarea.estado">
+          [estado]="tarea.estado"
+          (verDetalle)="abrirDetalle($event)">
         </app-tarea-card>
 
       </div>
@@ -102,6 +103,22 @@
     </div>
 
   </div>
+
+  <div *ngIf="vistaActual === 'detalle'">
+
+  <button
+    class="btn btn-secondary mb-3"
+    (click)="cambiarVista('inicio')">
+
+    Volver
+
+  </button>
+
+  <app-tarea-detalle
+    [idTarea]="tareaSeleccionadaId">
+  </app-tarea-detalle>
+
+</div>
 
   <!-- CREAR TAREA -->
 
@@ -153,7 +170,7 @@
     </table>
 
   </div>
-
+  
 </div>
 
   </div>

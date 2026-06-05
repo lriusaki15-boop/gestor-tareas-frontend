@@ -5,6 +5,7 @@ import { UsuariosService } from '../../services/usuario';
 import { TareasService } from '../../services/tareas';
 import { TareaCard } from '../tarea-card/tarea-card';
 import { CreacionTarea } from '../creacion-tarea/creacion-tarea';
+import { TareaDetalle } from '../tarea-detalle/tarea-detalle';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,8 @@ import { CreacionTarea } from '../creacion-tarea/creacion-tarea';
   imports: [
     CommonModule,
     TareaCard,
-    CreacionTarea
+    CreacionTarea,
+    TareaDetalle
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -25,7 +27,8 @@ export class Home implements OnInit {
   tareas: any[] = [];
   usuarios: any[] = [];
 
-  vistaActual: 'inicio' | 'crear' | 'usuarios' = 'inicio';
+  vistaActual: 'inicio' | 'crear' | 'usuarios' | 'detalle' = 'inicio';
+  tareaSeleccionadaId = 0;
 
   ngOnInit(): void {
   this.vistaActual = 'inicio';
@@ -66,4 +69,9 @@ export class Home implements OnInit {
     localStorage.removeItem('idUsuario');
     this.router.navigate(['/login']);
   }
+
+  abrirDetalle(id: number) {
+    this.tareaSeleccionadaId = id;
+    this.vistaActual = 'detalle';
+}
 }
