@@ -106,18 +106,18 @@
 
   <div *ngIf="vistaActual === 'detalle'">
 
-  <button
+  
+
+  <app-tarea-detalle
+    [idTarea]="tareaSeleccionadaId">
+  </app-tarea-detalle>
+<button
     class="btn btn-secondary mb-3"
     (click)="cambiarVista('inicio')">
 
     Volver
 
   </button>
-
-  <app-tarea-detalle
-    [idTarea]="tareaSeleccionadaId">
-  </app-tarea-detalle>
-
 </div>
 
   <!-- CREAR TAREA -->

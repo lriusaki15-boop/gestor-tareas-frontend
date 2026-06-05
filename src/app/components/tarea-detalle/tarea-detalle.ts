@@ -15,6 +15,9 @@ import { Input } from '@angular/core';
 export class TareaDetalle implements  OnChanges {
   @Input() idTarea = 0;
 
+  titulo = '';
+  descripcion = '';
+
   tarea: any;
   editando = false;
   backup: any;
@@ -23,7 +26,19 @@ export class TareaDetalle implements  OnChanges {
     private tareasService: TareasService,
     private router: Router
   ) {}
-  
+
+  ngOnInit(): void {
+    this.tareasService.obtenerTareaPorId(this.idTarea).subscribe({
+      next: (data) => {
+        console.log('Tarea cargada:', data);
+        this.tarea = data;
+        console.log('Tarea cargada tarea:', this.tarea);
+      },
+      error: (err) => {
+        console.error('Error API:', err);
+      }
+    });    
+  }
 
   ngOnChanges(changes: SimpleChanges): void {
 
@@ -34,7 +49,8 @@ export class TareaDetalle implements  OnChanges {
     this.tareasService.obtenerTareaPorId(this.idTarea).subscribe({
       next: (data) => {
         console.log('Tarea cargada:', data);
-        this.tarea = data.tarea;
+        this.tarea = data;
+        console.log('Tarea cargada tarea:', this.tarea);
       },
       error: (err) => {
         console.error('Error API:', err);
