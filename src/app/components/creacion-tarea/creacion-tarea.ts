@@ -17,6 +17,9 @@ export class CreacionTarea {
 
   titulo = '';
   descripcion = '';
+  responsable = '';
+  prioridad = '';
+  usuarioId = '';
 
   mensajeExito = '';
   mensajeError = '';
@@ -28,17 +31,16 @@ export class CreacionTarea {
 
     const nuevaTarea = {
       titulo: this.titulo,
-      descripcion: this.descripcion
+      descripcion: this.descripcion,
+      responsable: localStorage.getItem('nombre'),
+      prioridad: this.prioridad,
+      estado: 0,
+      usuarioId: localStorage.getItem('idUsuario')
     };
 
     this.tareasService.crearTarea(nuevaTarea).subscribe({
       next: () => {
-
         this.mensajeExito = 'Tarea creada correctamente';
-
-        this.titulo = '';
-        this.descripcion = '';
-
         this.tareaCreada.emit();
       },
       error: (err) => {

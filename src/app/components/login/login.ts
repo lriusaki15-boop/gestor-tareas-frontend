@@ -29,6 +29,8 @@ export class Login {
       next: (resp: any) => {
         console.log(resp);
         localStorage.setItem('token', resp.clave ?? resp.Clave);
+        localStorage.setItem('nombre', resp.nombre);
+        localStorage.setItem('idUsuario', resp.id);
         
          this.router.navigate(['/home']);
       },

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { UsuariosService } from '../../services/usuario';
@@ -17,7 +17,7 @@ import { CreacionTarea } from '../creacion-tarea/creacion-tarea';
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {
+export class Home implements OnInit {
   private usuariosService = inject(UsuariosService);
   private router = inject(Router);
   private tareasService = inject(TareasService);
@@ -27,7 +27,7 @@ export class Home {
 
   vistaActual: 'inicio' | 'crear' | 'usuarios' = 'inicio';
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.cargarTareas();
   }
 

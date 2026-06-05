@@ -21,29 +21,23 @@
               <label class="form-label fw-semibold">
                 Título
               </label>
-
-              <input
-                type="text"
-                class="form-control"
-                name="titulo"
-                [(ngModel)]="titulo"
-                required>
-
+              <input type="text" class="form-control" name="titulo" [(ngModel)]="titulo" required>
             </div>
-
             <div class="mb-3">
-
               <label class="form-label fw-semibold">
                 Descripción
               </label>
-
-              <textarea
-                class="form-control"
-                rows="4"
-                name="descripcion"
-                [(ngModel)]="descripcion">
+              <textarea class="form-control" rows="4" name="descripcion" [(ngModel)]="descripcion">
               </textarea>
+            </div>
 
+            <div class="mb-3">
+              <label for="colores">Elige la prioridad de la tarea:</label>
+              <select name="colores" [(ngModel)]="prioridad" name="prioridad" id="prioridad">
+                <option value="0">Bajo</option>
+                <option value="1">Medio</option>
+                <option value="2">Alto</option>
+              </select>
             </div>
 
             <div
