@@ -8,18 +8,18 @@ export class UsuariosService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = 'https://localhost:5001/api/usuarios';
+  private apiUrl = 'https://localhost:5001/api/Usuarios';
 
   obtenerListadoUsuarios() {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl+'/ObtenerListadoUsuarios');
   }
 
   obtenerUsuarioPorId(id: number, data: any) {
-    return this.http.get<any[]>(`${this.apiUrl}/${id}`);
+    return this.http.get<any[]>(`${this.apiUrl}/ObtenerUsuariosPorID/${id}`);
   }
 
   obtenerUsuarioPorDatos(nombre: string, apellidos: string, email: string, tipoUsuario: number, data: any) {
-    return this.http.get<any[]>(`${this.apiUrl}`, data);
+    return this.http.get<any[]>(`${this.apiUrl}/ObtenerUsuarioPorDatos`, data);
   }
 
   editarUsuario(id: number, data: any) {

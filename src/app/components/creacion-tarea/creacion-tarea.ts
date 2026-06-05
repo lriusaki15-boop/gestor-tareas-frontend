@@ -23,7 +23,7 @@ export class CreacionTarea {
 
   mensajeExito = '';
   mensajeError = '';
-crearTareaForm: any;
+  crearTareaForm: any;
 
   crearTarea(): void {
 

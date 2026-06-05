@@ -19,6 +19,8 @@ export class TareaCard {
 
   @Input() estado = 0;
 
+  @Input() prioridad = 0;
+
   abrirDetalle() {
     this.verDetalle.emit(this.id);
   }

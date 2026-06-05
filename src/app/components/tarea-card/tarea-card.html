@@ -22,6 +22,15 @@
       {{ estado === 0 ? 'Pendiente' : estado === 1 ? 'EnProgreso' : estado === 2 ? 'Completada' : 'Cancelada' }}
 
     </span>
+
+    <span
+       class="badge"
+       [class.bg-success]="prioridad === 0"
+       [class.bg-danger]="prioridad === 1"
+       [class.bg-warning]="prioridad === 2">
+
+      {{ prioridad === 0 ? 'Baja' : prioridad === 1 ? 'Media' : 'Alta' }}
+    </span>
   </div>
 
 </div>

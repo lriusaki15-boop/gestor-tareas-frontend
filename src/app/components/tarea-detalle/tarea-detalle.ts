@@ -68,5 +68,6 @@ export class TareaDetalle implements OnChanges {
       next: () => this.router.navigate(['/home']),
       error: (err) => console.error(err)
     });
+
   }
 }

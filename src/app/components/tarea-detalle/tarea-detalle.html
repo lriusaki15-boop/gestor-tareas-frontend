@@ -5,7 +5,28 @@
   <div *ngIf="!editando">
     <p><strong>Título:</strong> {{ tarea.titulo }}</p>
     <p><strong>Descripción:</strong> {{ tarea.descripcion }}</p>
+    <p><strong>Responsable:</strong> {{ tarea.responsable }}</p>
+    <p><span
+       class="badge"
+      [class.bg-warning]="tarea.estado === 0"
+      [class.bg-info]="tarea.estado === 1"
+      [class.bg-success]="tarea.estado === 2"
+      [class.bg-danger]="tarea.estado === 3">
 
+      {{ tarea.estado === 0 ? 'Pendiente' : tarea.estado === 1 ? 'EnProgreso' : tarea.estado === 2 ? 'Completada' : 'Cancelada' }}
+
+    </span></p>
+
+    <p><span
+       class="badge"
+       [class.bg-success]="tarea.estado === 0"
+       [class.bg-danger]="tarea.estado === 1"
+       [class.bg-warning]="tarea.prioridad === 2">
+
+      {{ tarea.prioridad === 0 ? 'Baja' : tarea.prioridad === 1 ? 'Media' : 'Alta' }}
+
+    </span></p>
+ 
     <button class="btn btn-primary me-2" (click)="activarEdicion()">Editar</button>
     <button class="btn btn-danger" (click)="eliminarTarea()">Eliminar</button>
   </div>

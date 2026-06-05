@@ -95,6 +95,7 @@
           [responsable]="tarea.responsable"
           [fechaCreacion]="tarea.fechaCreacion"
           [estado]="tarea.estado"
+          [prioridad]="tarea.prioridad"
           (verDetalle)="abrirDetalle($event)">
         </app-tarea-card>
 
@@ -110,13 +111,14 @@
     [idTarea]="tareaSeleccionadaId">
     
   </app-tarea-detalle>
-<button
-    class="btn btn-secondary mb-3"
-    (click)="cambiarVista('inicio')">
+  <br>
+   <button
+      class="btn btn-secondary mb-3"
+      (click)="cambiarVista('inicio')">
 
-    Volver
+      Volver
 
-  </button>
+    </button>
 </div>
 
   <!-- CREAR TAREA -->
@@ -145,6 +147,7 @@
 
         <tr>
           <th>Nombre</th>
+          <th>Apellidos</th>
           <th>Email</th>
         </tr>
 
@@ -156,6 +159,10 @@
 
           <td>
             {{ usuario.nombre }}
+          </td>
+
+          <td>
+            {{ usuario.apellidos }}
           </td>
 
           <td>
