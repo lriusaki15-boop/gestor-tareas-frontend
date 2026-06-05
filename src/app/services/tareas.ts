@@ -8,14 +8,14 @@ export class TareasService {
 
   private http = inject(HttpClient);
 
-  private apiUrl = 'https://localhost:5001/api/tareas';
+  private apiUrl = 'https://localhost:5001/api/Tareas';
 
   obtenerTareas() {
-    return this.http.get<any[]>(this.apiUrl);
+    return this.http.get<any[]>(this.apiUrl + '/ObtenerTodasTareas');
   }
 
   crearTarea(data: any) {
-    return this.http.post(this.apiUrl, data);
+    return this.http.post(this.apiUrl + '/CrearTarea', data);
   }
 
   editarTarea(id: number, data: any) {
@@ -23,6 +23,6 @@ export class TareasService {
   }
 
   eliminarTarea(id: number) {
-    return this.http.delete(`${this.apiUrl}/${id}`);
+    return this.http.delete(`${this.apiUrl}/EliminarTarea/${id}`);
   }
 }

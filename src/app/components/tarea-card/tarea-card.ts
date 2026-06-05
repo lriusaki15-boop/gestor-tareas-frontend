@@ -14,5 +14,7 @@ export class TareaCard {
 
   @Input() fechaCreacion!: string;
 
-  @Input() estaCompletada = false;
+  @Input() responsable : string | undefined;
+
+  @Input() estado = 0;
 }

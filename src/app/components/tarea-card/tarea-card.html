@@ -7,7 +7,7 @@
     </h5>
 
     <p class="text-muted mb-2">
-      {{ nombreUsuario }}
+      {{ responsable }}
     </p>
 
     <p class="small">
@@ -15,11 +15,13 @@
     </p>
 
     <span
-      class="badge"
-      [class.bg-success]="estaCompletada"
-      [class.bg-warning]="!estaCompletada">
+       class="badge"
+      [class.bg-warning]="estado === 0"
+      [class.bg-info]="estado === 1"
+      [class.bg-success]="estado === 2"
+      [class.bg-danger]="estado === 3">
 
-      {{ estaCompletada ? 'Completada' : 'Pendiente' }}
+      {{ estado === 0 ? 'Pendiente' : estado === 1 ? 'EnProgreso' : estado === 2 ? 'Completada' : 'Cancelada' }}
 
     </span>
 

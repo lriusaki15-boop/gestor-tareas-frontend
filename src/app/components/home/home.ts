@@ -57,6 +57,8 @@ export class Home implements OnInit {
 
   logout() {
     localStorage.removeItem('token');
+    localStorage.removeItem('nombre');
+    localStorage.removeItem('idUsuario');
     this.router.navigate(['/login']);
   }
 }

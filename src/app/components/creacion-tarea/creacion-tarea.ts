@@ -23,6 +23,7 @@ export class CreacionTarea {
 
   mensajeExito = '';
   mensajeError = '';
+crearTareaForm: any;
 
   crearTarea(): void {
 
@@ -33,15 +34,19 @@ export class CreacionTarea {
       titulo: this.titulo,
       descripcion: this.descripcion,
       responsable: localStorage.getItem('nombre'),
-      prioridad: this.prioridad,
+      prioridad: Number(this.prioridad),
       estado: 0,
-      usuarioId: localStorage.getItem('idUsuario')
+      usuarioId: Number(localStorage.getItem('idUsuario'))
     };
 
     this.tareasService.crearTarea(nuevaTarea).subscribe({
       next: () => {
         this.mensajeExito = 'Tarea creada correctamente';
         this.tareaCreada.emit();
+
+        this.titulo = '';
+        this.descripcion = '';
+        this.prioridad = '';
       },
       error: (err) => {
         console.error(err);

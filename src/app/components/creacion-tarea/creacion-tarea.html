@@ -15,7 +15,22 @@
         <div class="card-body">
 
           <form (ngSubmit)="crearTarea()">
+             <div
+              *ngIf="mensajeExito"
+              class="alert alert-success">
 
+              {{ mensajeExito }}
+
+            </div>
+
+            <div
+              *ngIf="mensajeError"
+              class="alert alert-danger">
+
+              {{ mensajeError }}
+
+            </div>
+ 
             <div class="mb-3">
 
               <label class="form-label fw-semibold">
@@ -32,30 +47,13 @@
             </div>
 
             <div class="mb-3">
-              <label for="colores">Elige la prioridad de la tarea:</label>
-              <select name="colores" [(ngModel)]="prioridad" name="prioridad" id="prioridad">
+              <label for="prioridad">Elige la prioridad de la tarea:</label>
+              <select [(ngModel)]="prioridad" name="prioridad">
                 <option value="0">Bajo</option>
                 <option value="1">Medio</option>
                 <option value="2">Alto</option>
               </select>
             </div>
-
-            <div
-              *ngIf="mensajeExito"
-              class="alert alert-success">
-
-              {{ mensajeExito }}
-
-            </div>
-
-            <div
-              *ngIf="mensajeError"
-              class="alert alert-danger">
-
-              {{ mensajeError }}
-
-            </div>
-
             <button
               type="submit"
               class="btn btn-primary w-100">
