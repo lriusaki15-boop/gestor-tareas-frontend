@@ -1,6 +1,6 @@
 <div class="card shadow-sm h-100">
 
-  <div class="card-body">
+  <div class="card-body" class="card shadow-sm h-100" (click)="abrirDetalle()" style="cursor:pointer;">
 
     <h5 class="card-title">
       {{ titulo }}
@@ -22,7 +22,6 @@
       {{ estado === 0 ? 'Pendiente' : estado === 1 ? 'EnProgreso' : estado === 2 ? 'Completada' : 'Cancelada' }}
 
     </span>
-    <div class="card shadow-sm h-100" (click)="abrirDetalle()" style="cursor:pointer;"></div>
   </div>
 
 </div>
