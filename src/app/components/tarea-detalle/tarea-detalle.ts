@@ -1,42 +1,45 @@
 import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { TareasService } from '../../services/tareas';
-import { TareaDetalle } from './tarea-detalle';
-import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-tarea-detalle',
-  templateUrl: './tarea-detalle.component.html',
-  styleUrls: ['./tarea-detalle.component.css']
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './tarea-detalle.html',
+  styleUrls: ['./tarea-detalle.css']
 })
-export class TareaDetalleComponent implements OnInit {
+export class TareaDetalle implements OnInit {
 
-  tarea: any; // reemplaza con tu modelo Tarea
-  editando = false; // control de modo edición
-  tareaBackup: any; // para cancelar cambios
+  tarea: any;
+  editando = false;
+  backup: any;
 
   constructor(
     private route: ActivatedRoute,
     private tareasService: TareasService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    const id = this.route.snapshot.paramMap.get('id');
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+
     this.tareasService.obtenerTareaPorId(id).subscribe({
       next: (data) => this.tarea = data,
-      error: (err) => console.error('Error cargando tarea', err)
+      error: (err) => console.error(err)
     });
   }
 
   activarEdicion() {
+    this.backup = { ...this.tarea };
     this.editando = true;
-    this.tareaBackup = { ...this.tarea }; // guardamos copia
   }
 
   cancelarEdicion() {
+    this.tarea = { ...this.backup };
     this.editando = false;
-    this.tarea = { ...this.tareaBackup }; // restauramos
   }
 
   guardarEdicion() {
@@ -45,16 +48,16 @@ export class TareaDetalleComponent implements OnInit {
         this.tarea = data;
         this.editando = false;
       },
-      error: (err) => console.error('Error actualizando tarea', err)
+      error: (err) => console.error(err)
     });
   }
 
   eliminarTarea() {
-    if (confirm('¿Seguro que quieres eliminar esta tarea?')) {
-      this.tareasService.eliminarTarea(this.tarea.id).subscribe({
-        next: () => this.router.navigate(['/']),
-        error: (err) => console.error('Error eliminando tarea', err)
-      });
-    }
+    if (!confirm('¿Seguro que quieres eliminar esta tarea?')) return;
+
+    this.tareasService.eliminarTarea(this.tarea.id).subscribe({
+      next: () => this.router.navigate(['/home']),
+      error: (err) => console.error(err)
+    });
   }
 }

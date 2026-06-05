@@ -25,4 +25,12 @@ export class TareasService {
   eliminarTarea(id: number) {
     return this.http.delete(`${this.apiUrl}/EliminarTarea/${id}`);
   }
+
+  actualizarTarea(data: any) {
+  return this.http.put(`${this.apiUrl}/ActualizarTarea`, data);
+}
+
+obtenerTareaPorId(id: number) {
+  return this.http.get<any>(`${this.apiUrl}/ObtenerTareasPorID/${id}`);
+}
 }
