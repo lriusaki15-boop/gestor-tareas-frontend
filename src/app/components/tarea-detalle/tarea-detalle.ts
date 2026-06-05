@@ -34,7 +34,7 @@ export class TareaDetalle implements  OnChanges {
     this.tareasService.obtenerTareaPorId(this.idTarea).subscribe({
       next: (data) => {
         console.log('Tarea cargada:', data);
-        this.tarea = data;
+        this.tarea = data.tarea;
       },
       error: (err) => {
         console.error('Error API:', err);
