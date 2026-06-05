@@ -5,8 +5,8 @@
 
   <div class="container">
 
-        <a class="navbar-brand fw-bold" href="#">
-          MiApp
+        <a class="navbar-brand fw-bold">
+          Gestor de Tareas
         </a>
 
         <button
@@ -109,13 +109,7 @@
   
 
   <app-tarea-detalle
-    [idTarea]="tareaSeleccionadaId"
-    [titulo]="tarea.titulo"
-    [responsable]="tarea.responsable"
-    [fechaCreacion]="tarea.fechaCreacion"
-    [estado]="tarea.estado"
-    [descripcion]="tarea.descripcion"
-    [prioridad="tarea.prioridad"]>
+    [idTarea]="tareaSeleccionadaId">
     
   </app-tarea-detalle>
 <button

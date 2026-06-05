@@ -14,26 +14,25 @@ import { Input } from '@angular/core';
 })
 export class TareaDetalle  {
   @Input() idTarea = 0;
-  
-  @Input() titulo = '';
 
-  @Input() nombreUsuario = '';
-
-  @Input() fechaCreacion!: string;
-
-  @Input() responsable : string | undefined;
-
-  @Input() estado = 0;
 
   tarea: any;
   editando = false;
   backup: any;
 
+  
   constructor(
     private tareasService: TareasService,
     private router: Router
   ) {}
-  
+
+  cargarTarea() {
+  this.tareasService.obtenerTareaPorId(this.idTarea).subscribe({
+    next: (data) => this.tarea = data,
+    error: (err) => console.error(err)
+  });
+    console.log(this.tarea);
+}
 
   activarEdicion() {
     this.backup = { ...this.tarea };
