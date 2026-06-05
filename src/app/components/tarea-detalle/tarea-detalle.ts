@@ -52,6 +52,9 @@ export class TareaDetalle implements OnChanges {
   }
 
   guardarEdicion() {
+    if(this.tarea.estado == 3){
+      this.tarea.fechaFinTarea = Date.now;
+    }
     this.tareasService.actualizarTarea(this.tarea).subscribe({
       next: (data) => {
         this.tarea = data;

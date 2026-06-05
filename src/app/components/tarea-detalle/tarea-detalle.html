@@ -1,12 +1,12 @@
 <div *ngIf="tarea" class="container mt-4">
 
-  <h2>Detalle de Tarea</h2>
+  <h2>Detalle de Tareaa</h2>
 
   <div *ngIf="!editando">
     <p><strong>Título:</strong> {{ tarea.titulo }}</p>
     <p><strong>Descripción:</strong> {{ tarea.descripcion }}</p>
     <p><strong>Responsable:</strong> {{ tarea.responsable }}</p>
-    <p><span
+    <p>Estado: <span
        class="badge"
       [class.bg-warning]="tarea.estado === 0"
       [class.bg-info]="tarea.estado === 1"
@@ -17,21 +17,21 @@
 
     </span></p>
 
-    <p><span
+    <p>Prioridad: <span
        class="badge"
-       [class.bg-success]="tarea.estado === 0"
-       [class.bg-danger]="tarea.estado === 1"
+       [class.bg-success]="tarea.prioridad === 0"
+       [class.bg-danger]="tarea.prioridad === 1"
        [class.bg-warning]="tarea.prioridad === 2">
 
       {{ tarea.prioridad === 0 ? 'Baja' : tarea.prioridad === 1 ? 'Media' : 'Alta' }}
 
     </span></p>
  
-    <button class="btn btn-primary me-2" (click)="activarEdicion()">Editar</button>
+    <button *ngIf="tarea.estado != 3" class="btn btn-primary me-2" (click)="activarEdicion()">Editar</button>
     <button class="btn btn-danger" (click)="eliminarTarea()">Eliminar</button>
   </div>
 
-  <div *ngIf="editando">
+  <div *ngIf="editando" >
     <div class="mb-3">
       <label>Título</label>
       <input class="form-control" [(ngModel)]="tarea.titulo">
@@ -40,6 +40,28 @@
     <div class="mb-3">
       <label>Descripción</label>
       <textarea class="form-control" [(ngModel)]="tarea.descripcion"></textarea>
+    </div>
+    <div class="mb-3">
+              <label for="estado" >Elige el estado de la tarea:</label>
+              <select [(ngModel)]="tarea.estado" name="estado">
+                <option [ngValue]="0">Pendiente</option>
+                <option [ngValue]="1">EnProgreso</option>
+                <option [ngValue]="2">Completada</option>
+                <option [ngValue]="3">Cancelada</option>
+              </select>
+    </div>
+    <div class="mb-3">
+              <label for="prioridad">Elige la prioridad de la tarea:</label>
+              <select [(ngModel)]="tarea.prioridad" name="prioridad">
+                <option value="0">Bajo</option>
+                <option value="1">Medio</option>
+                <option value="2">Alto</option>
+              </select>
+    </div>
+
+    <div class="mb-3" *ngIf="tarea.estado == 3">
+        <label>Motivo de la cancelacion:</label>
+        <textarea class="form-control" [(ngModel)]="tarea.motivoCancelacion"></textarea>
     </div>
 
     <button class="btn btn-success me-2" (click)="guardarEdicion()">Guardar</button>

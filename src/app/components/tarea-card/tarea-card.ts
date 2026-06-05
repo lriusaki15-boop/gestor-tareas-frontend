@@ -21,6 +21,8 @@ export class TareaCard {
 
   @Input() prioridad = 0;
 
+  @Input() fechaFinTarea!: string;
+
   abrirDetalle() {
     this.verDetalle.emit(this.id);
   }

@@ -8,8 +8,12 @@
 
     <p class="text-muted mb-2"> Creador: {{ responsable }} </p>
 
-    <p class="small">
+    <p class="small">Fecha creacion:
       {{ fechaCreacion }}
+    </p>
+
+    <p class="small" *ngIf="estado == 3">Fecha fin de la tarea:
+      {{ fechaFinTarea }}
     </p>
     
     <span
