@@ -15,7 +15,7 @@ export class UsuariosService {
   }
 
   obtenerUsuarioPorId(id: number, data: any) {
-    return this.http.get<any[]>(`${this.apiUrl}/${id}`, data);
+    return this.http.get<any[]>(`${this.apiUrl}/${id}`);
   }
 
   obtenerUsuarioPorDatos(nombre: string, apellidos: string, email: string, tipoUsuario: number, data: any) {
