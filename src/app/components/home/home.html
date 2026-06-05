@@ -90,10 +90,11 @@
         *ngFor="let tarea of tareas">
 
         <app-tarea-card
+          [id] = "tarea.id"
           [titulo]="tarea.titulo"
-          [nombreUsuario]="tarea.nombreUsuario"
+          [responsable]="tarea.responsable"
           [fechaCreacion]="tarea.fechaCreacion"
-          [estaCompletada]="tarea.estaCompletada">
+          [estado]="tarea.estado">
         </app-tarea-card>
 
       </div>

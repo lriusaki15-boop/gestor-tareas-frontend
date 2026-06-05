@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
   styleUrl: './tarea-card.css',
 })
 export class TareaCard {
+  @Input() id = 0;
   @Input() titulo = '';
 
   @Input() nombreUsuario = '';

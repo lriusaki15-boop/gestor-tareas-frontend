@@ -28,8 +28,9 @@ export class Home implements OnInit {
   vistaActual: 'inicio' | 'crear' | 'usuarios' = 'inicio';
 
   ngOnInit(): void {
-    this.cargarTareas();
-  }
+  this.vistaActual = 'inicio';
+  this.cargarTareas();  
+}
 
   cargarTareas() {
     this.tareasService.obtenerTareas().subscribe({
